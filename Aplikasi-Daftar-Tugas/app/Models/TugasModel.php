@@ -56,5 +56,14 @@ class TugasModel extends Model
     public function getLimit()
     {
         return $this->limit(5)->findAll();
+
+    }
+
+    public function destroy($data)
+    {
+        $this->tugas->delete($data);
+        session()->setFlashdata('success', 'Data Berhasil Dihapus.');
+        return redirect()->to('/tugas');
     }
 }
+
