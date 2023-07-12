@@ -38,4 +38,32 @@ class Tugas extends BaseController
         $data["erors"] = session('errors');
         return view("tugas/add", $data);
     }
+    //buat ke form update
+    public function update($id)
+    {
+        $data["jenistugas"] = $this->jenistugas->getAllData();
+        $data["errors"] = session('errors');
+        $data["datatugas"] = $this->tugas->getDataByID($id);
+        return view("tugas/edit", $data);
+    }
+
+    //buat simpan data
+    public function edit()
+    {
+
+        //Ambil data lama
+        $tugas = $this->tugas->find($this->request->getPost('id_tugas'));
+        //tambah request ID
+        $data = [
+            'id_tugas' => $this->request->getPost('id_tugas'),
+            'nama_tugas' => $this->request->getPost('nama_tugas'),
+            'deskripsi' => $this->request->getPost('deskripsi'),
+            'id_jenistugas' => $this->request->getPost('id_jenistugas'),
+            'deadline' => $this->request->getPost('deadline'),
+        ];
+
+        $this->tugas->save($data);
+        session()->setFlashData('success', 'Data berhasil diperbarui');
+        return redirect()->to('/tugas');
+    }
 }
