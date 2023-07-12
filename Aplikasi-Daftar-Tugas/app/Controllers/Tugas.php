@@ -26,4 +26,10 @@ class Tugas extends BaseController
         $data['semuatugas'] = $this->tugas->getAllDataJoin();
         return view("tugas/semuatugas", $data);
     }
+    public function index()
+    {
+        $data['data_tugas'] = $this->tugas->getAllDataJoin();
+        return view("tugas/index", $data);
+    }
 }
+
