@@ -38,4 +38,23 @@ class TugasModel extends Model
     {
         return $this->findAll();
     }
+    public function getDataByID($id)
+    {
+        return $this->find($id);
+    }
+
+    public function getDataBy($data)
+    {
+        return $this->where("jenistugas", $data)->findAll();
+    }
+
+    public function getOrderBy()
+    {
+        return $this->orderBy('created_at', 'desc')->findAll();
+    }
+
+    public function getLimit()
+    {
+        return $this->limit(5)->findAll();
+    }
 }
