@@ -10,5 +10,10 @@ class JenistugasModel extends Model
     protected $primaryKey       = 'id_jenistugas';
     protected $useAutoIncrement = true;
     protected $allowedFields      = ['nama_jenistugas', 'tugas_terkait', 'katagori'];
- 
+
+
+    public function getAllData()
+    {
+        return $this->findAll();
+    }
 }
