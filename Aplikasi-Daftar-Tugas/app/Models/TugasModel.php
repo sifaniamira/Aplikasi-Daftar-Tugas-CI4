@@ -34,5 +34,8 @@ class TugasModel extends Model
         return $query->get()->getResultArray();
     }
 
-   
+    public function getAllData()
+    {
+        return $this->findAll();
+    }
 }
